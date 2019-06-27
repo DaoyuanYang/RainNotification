@@ -21,8 +21,8 @@
             android:layout_marginRight="8dp"/>
     <Button
             android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_width="86dp"
+            android:layout_height="45dp"
             android:id="@+id/button"
             app:layout_constraintTop_toBottomOf="@+id/titleMessage"
             app:layout_constraintStart_toStartOf="@+id/titleMessage" android:layout_marginLeft="20dp"

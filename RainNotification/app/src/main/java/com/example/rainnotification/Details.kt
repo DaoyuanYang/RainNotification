@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log.d
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_about_me.*
+import kotlinx.android.synthetic.main.activity_details.*
 
 class Details : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        setContentView(R.layout.activity_about_me)
+        setContentView(R.layout.activity_details)
 
-        home.setOnClickListener {
+        homebutton.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
-            d("Dom", "Hello, ${editText.text}")
+            d("Dom", "Hello, ")
         }
     }
 }
