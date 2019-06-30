@@ -1,9 +1,11 @@
 package com.example.rainnotification;
 
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 public class Resource {
+
     public static void main()
     {
         String html = "<p>An <a href='http://google.com/'><b>example</b></a> link.</p>";

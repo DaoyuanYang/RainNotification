@@ -2,7 +2,7 @@ package com.example.rainnotification
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log.d
+import android.widget.EditText
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,12 +21,25 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-        titleMessage.text = "Here is the forecast for rain!"
-        button.setOnClickListener {
-            Resource.main();
-            startActivity(Intent(this, Details::class.java))
-            d("Main page text panel", "Hello, ${editText2.text}")
+
+
+        fun sendMessage(/*View: View*/){
+            val editText = findViewById<EditText>(R.id.editText)
+            val message = editText.text.toString()
+            val DomIntent = Intent(this, DisplayMessageActivity::class.java).apply {
+                putExtra("MAINACTIVITY_MESSAGE", message)
+            }
+            startActivity(DomIntent)
         }
+
+        button.setOnClickListener {
+            sendMessage()
+            //            Resource.main();
+//            startActivity(Intent(this, Details::class.java))
+//            d("Main page text panel", "Hello, ${editText2.text}")
+        }
+
+
     }
 
 
