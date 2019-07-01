@@ -22,21 +22,21 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-        fun sendMessage(/*View: View*/){
+        buttonForTest.setOnClickListener {
             val editText = findViewById<EditText>(R.id.editText)
             val message = editText.text.toString()
             val DomIntent = Intent(this, DisplayMessageActivity::class.java).apply {
                 putExtra("MAINACTIVITY_MESSAGE", message)
             }
-            startActivity(DomIntent)
-        }
-
-        button.setOnClickListener {
-            sendMessage()
-            //            Resource.main();
+            startActivity(DomIntent)            //            Resource.main();
 //            startActivity(Intent(this, Details::class.java))
 //            d("Main page text panel", "Hello, ${editText2.text}")
+        }
+
+        buttonToDetails.setOnClickListener {
+            val intentDet = Intent(this, weather_details::class.java).apply {
+            }
+            startActivity(intentDet)
         }
 
 
