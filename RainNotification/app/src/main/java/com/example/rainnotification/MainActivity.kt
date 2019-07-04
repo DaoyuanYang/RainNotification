@@ -13,12 +13,15 @@ import com.android.volley.toolbox.Volley
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
     val url_BASE = "https://api.openweathermap.org/data/2.5/weather?q="
     var id = ""
     val url_END = "&appid=ee114fcf17bfeb308215ed3f430824f7"
 
+    var jsonFmtElem = arrayOf<String>("coord", "weather", "base", "main"
+                    , "visibility", "wind", "clouds", "timezone", "name", "id")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,21 +67,31 @@ class MainActivity : AppCompatActivity() {
 
     fun makeRequest(){
         val finalURL = url_BASE + id + url_END
-//        val url = "https://samples.openweathermap.org/data/2.5/forecast/daily?id=524901&appid=ee114fcf17bfeb308215ed3f430824f7"
         d("Final URL: ", finalURL)
-        val queue = Volley.newRequestQueue(this)
-        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, finalURL, null,
+
+        var jsonObjectRequest = JsonObjectRequest(Request.Method.GET, finalURL, null,
             Response.Listener { response ->
-                textView.text = "Response: %s".format(response.toString())
-                d("Weather info: ", "Response: %s".format(response.toString()))
+                var unformattedJson = JsonFormatter(response)
+                textView.text = "Response: %s".format(doFormat(unformattedJson))
+                d("Weather info: ", "Response: %s\n".format(response.toString()))
             },
             Response.ErrorListener { error ->
                 // TODO: Handle error
                 d("Error: ", "Error occurred in JsonObjectRequest!!!")
             }
         )
+
+        val queue = Volley.newRequestQueue(this)
         queue.add(jsonObjectRequest)
 
+    }
+
+    fun doFormat(jsonFormatter: JsonFormatter):String{
+        var rtn = "Here is the weather: \n"
+        for (elem in jsonFmtElem){
+            rtn += elem + ":   " + jsonFormatter.oriJsonObject.get(elem) + "\n"
+        }
+        return rtn
     }
 
 }
