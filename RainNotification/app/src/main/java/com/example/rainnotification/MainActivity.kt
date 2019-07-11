@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
 
         id = "Canberra"
         textView.text = "Refreshing......"
-        makeRequest()
 
         buttonSearch.setOnClickListener {
             val editText = findViewById<EditText>(R.id.editText)
@@ -87,7 +86,7 @@ class MainActivity : AppCompatActivity() {
             makeRequest()
         }
 
-//        setTimer()
+        setTimer()
     }
 
 
@@ -178,19 +177,20 @@ class MainActivity : AppCompatActivity() {
 */
     fun setTimer(){
         val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, 23)
-        calendar.set(Calendar.MINUTE, 2)
-        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.HOUR_OF_DAY, 13)
+        calendar.set(Calendar.MINUTE, 48)
+        calendar.set(Calendar.SECOND, 1)
 
-        val intentFromTimer = Intent(applicationContext, OnReceive::class.java).apply {
-            putExtra("MAIN_WEATHER_INFO", JSON_response.get("main").toString())
-        }
+        val intent = Intent(applicationContext, OnReceive::class.java)
 
-        val pendingIntent = PendingIntent.getBroadcast(applicationContext, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        val alarmManager: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-        startActivity(intentFromTimer)
+    //        val pendingIntent = PendingIntent.getBroadcast(applicationContext
+    //            , 100, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+
     }
 
 }
