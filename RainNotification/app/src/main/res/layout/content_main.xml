@@ -24,10 +24,10 @@
             tools:layout_editor_absoluteX="36dp" android:id="@+id/editText" android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/buttonSearch"/>
     <Button
-            android:text="Button to details"
+            android:text="Send Notification"
             android:layout_width="214dp"
             android:layout_height="54dp"
-            android:id="@+id/buttonToDetails" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/sendNotificationButton" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="20dp" android:layout_marginStart="20dp" android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/editText"/>
     <TextView
@@ -35,7 +35,7 @@
             android:layout_width="376dp"
             android:layout_height="310dp"
             android:id="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/buttonToDetails" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/sendNotificationButton" android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"/>
