@@ -1,0 +1,6 @@
+Key : ee114fcf17bfeb308215ed3f430824f7
+
+url : https://samples.openweathermap.org/data/2.5/forecast/daily?id=524901&appid=ee114fcf17bfeb308215ed3f430824f7
+
+
+lunchpicker API key: AIzaSyAvO5aAU1NJEs-gqX9nONWC2Tuvmv5JLDQ
